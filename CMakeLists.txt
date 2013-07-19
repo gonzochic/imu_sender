@@ -1,6 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-PROJECT (imu_sender)
+PROJECT (imu_sender C CXX)
 
 IF (NOT DEFINED CMAKE_MODULE_PATH)
   SET(CMAKE_MODULE_PATH "/home/roman/development/cmake_modules")
@@ -25,7 +25,8 @@ FILE(WRITE incl/version.hpp
         "#define IMU_SENDER_VERSION \"${imu_sender_release}\"\n\n"
         "#endif // IMU_SENDER_VERSION_HPP\n"
 )
-SET(CMAKE_CXX_FLAGS "-Wall -O2 -std=c++11")
+
+SET(CMAKE_CXX_FLAGS "-Wall -O2 -std=c++11 -pthread")
 SET(PROJECT_VERSION ${imu_sender_release})
 
 SET_DIRECTORY_PROPERTIES(PROPERTIES
@@ -35,6 +36,8 @@ SET_DIRECTORY_PROPERTIES(PROPERTIES
 # common
 
 ADD_SUBDIRECTORY (src)
+
+FIND_PACKAGE(Threads REQUIRED)
 
 # CTest config
 # ENABLE_TESTING()

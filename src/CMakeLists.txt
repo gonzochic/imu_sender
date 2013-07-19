@@ -1,4 +1,6 @@
 SET(imu_sender_sources
+  core.cpp
+  executor.cpp
   main.cpp
 )
 SET (imu_sender_headers
@@ -16,6 +18,7 @@ INCLUDE_DIRECTORIES(
 )
 
 TARGET_LINK_LIBRARIES(imu_sender
+  ${CMAKE_THREAD_LIBS_INIT}
 )
 
 
