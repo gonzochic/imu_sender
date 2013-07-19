@@ -25,7 +25,6 @@ FILE(WRITE incl/version.hpp
         "#define IMU_SENDER_VERSION \"${imu_sender_release}\"\n\n"
         "#endif // IMU_SENDER_VERSION_HPP\n"
 )
-SET(CMAKE_CXX_COMPILER "/usr/bin/gcc-4.8")
 SET(CMAKE_CXX_FLAGS "-Wall -O2 -std=c++11")
 SET(PROJECT_VERSION ${imu_sender_release})
 
