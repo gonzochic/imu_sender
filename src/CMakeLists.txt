@@ -3,6 +3,7 @@ SET(imu_sender_sources
   executor.cpp
   main.cpp
   sensor.cpp
+  udpsender.cpp
 )
 
 SET(gpio_sources
@@ -23,10 +24,14 @@ ADD_DEPENDENCIES(imu_sender includes)
 
 INCLUDE_DIRECTORIES(
   ${imu_sender_SOURCE_DIR}/incl
+  ${Boost_SYSTEM_INCL_DIRS}
 )
 
 TARGET_LINK_LIBRARIES(imu_sender
   ${CMAKE_THREAD_LIBS_INIT}
+
+  ${Boost_REGEX_LIBRARIES}
+  ${Boost_SYSTEM_LIBRARIES}
 )
 
 
