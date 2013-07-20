@@ -3,11 +3,18 @@ SET(imu_sender_sources
   executor.cpp
   main.cpp
 )
+
+SET(gpio_sources
+  MPU6050.cpp
+  I2Cdev.cpp
+)
+
 SET (imu_sender_headers
 )
 ADD_EXECUTABLE(imu_sender
   ${imu_sender_sources}
   ${imu_sender_headers}
+  ${gpio_sources}
 )
 
 
