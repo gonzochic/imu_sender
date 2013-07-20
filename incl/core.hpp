@@ -9,8 +9,6 @@
 #define IMU_SENDER_CORE_HPP
 
 #include <iostream>
-#include <mutex>
-#include <thread>
 
 namespace imu_sender {
 
@@ -19,16 +17,11 @@ namespace imu_sender {
     public:
         Core();
         ~Core();
-        void updateThread(std::string text);
         void run();
 
         void update();
         void updateSlow();
     private:
-        std::mutex m_guard;
-        long m_t1;
-        long m_t2;
-    
     };
 
 } // namespace imu_sender

@@ -15,7 +15,7 @@ using imu_sender::Executor;
 Executor::Executor(std::function<void()> functionToCall, const int duration)
     : m_updateFunction(functionToCall),
       m_runExecutor(false),
-      m_duration(duration)
+      m_duration(duration * 1000)
 {
     std::cout << "start with duration : " << duration << std::endl;
 }
@@ -34,17 +34,26 @@ void Executor::startExecutor()
 
 void Executor::updateExecutor()
 {
-    std::cout << "update every : " << m_duration.count() << std::endl;
     while (m_runExecutor) {
 
+        const auto start  = std::chrono::high_resolution_clock::now();
         m_updateFunction();
-        std::this_thread::sleep_for(m_duration);
+        const auto stop  = std::chrono::high_resolution_clock::now();
+
+        std::this_thread::sleep_for(m_duration - std::chrono::duration_cast<std::chrono::microseconds>(stop-start));
+        const auto endOfUpdate = std::chrono::high_resolution_clock::now() - start;
+
+        std::cout << "Update time : "
+                  << std::chrono::duration_cast<std::chrono::milliseconds>(endOfUpdate).count()
+                  << std::endl;
     }
 }
 
 
 void Executor::stopExecutor()
 {
-    m_runExecutor = false;
-    m_thread.join();
+    if (m_runExecutor) {
+        m_runExecutor = false;
+        m_thread.join();
+    }
 }

@@ -28,7 +28,7 @@ namespace imu_sender {
         std::thread m_thread;
         std::function<void()> m_updateFunction;
         volatile bool m_runExecutor;
-        std::chrono::milliseconds m_duration;
+        std::chrono::microseconds m_duration;
 
     };
 
