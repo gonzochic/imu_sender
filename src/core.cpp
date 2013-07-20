@@ -52,4 +52,9 @@ void Core::update()
 void Core::updateSlow()
 {
     std::cout << "Update slow called... " << std::endl;
+
+    const ImuData& data(m_sensor.getSensorData());
+    std::cout << "IMU DATA: x - " << data.x
+              << " | y - " << data.y
+              << " | z - " << data.z << std::endl;
 }
