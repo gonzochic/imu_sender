@@ -15,7 +15,8 @@
 
 using imu_sender::Core;
 
-Core::Core()
+Core::Core() :
+    m_sensor()
 {
     std::cout << "C'tor core" << std::endl;
 }
@@ -27,10 +28,6 @@ Core::~Core()
 
 void Core::run()
 {
-    
-    imu_sender::Executor executor(std::bind(&Core::update, this), 50);
-    executor.startExecutor();
-
     imu_sender::Executor executor2(std::bind(&Core::updateSlow, this), 1000);
     executor2.startExecutor();
 
@@ -38,9 +35,6 @@ void Core::run()
     int i(0);
 
     while (true) {
-        if (i > 20) {
-            executor.stopExecutor();
-        }
         std::this_thread::sleep_for(duration);
         i++;
     }
@@ -57,6 +51,5 @@ void Core::update()
 
 void Core::updateSlow()
 {
-    
     std::cout << "Update slow called... " << std::endl;
 }

@@ -2,6 +2,7 @@ SET(imu_sender_sources
   core.cpp
   executor.cpp
   main.cpp
+  sensor.cpp
 )
 
 SET(gpio_sources

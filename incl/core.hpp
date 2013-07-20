@@ -8,7 +8,10 @@
 #ifndef IMU_SENDER_CORE_HPP
 #define IMU_SENDER_CORE_HPP
 
-#include <iostream>
+#include <memory>
+
+#include "MPU6050.h"
+#include "sensor.hpp"
 
 namespace imu_sender {
 
@@ -22,6 +25,7 @@ namespace imu_sender {
         void update();
         void updateSlow();
     private:
+        Sensor m_sensor;
     };
 
 } // namespace imu_sender
