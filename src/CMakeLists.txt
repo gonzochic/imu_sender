@@ -24,7 +24,6 @@ ADD_DEPENDENCIES(imu_sender includes)
 
 INCLUDE_DIRECTORIES(
   ${imu_sender_SOURCE_DIR}/incl
-  ${Boost_SYSTEM_INCL_DIRS}
 )
 
 TARGET_LINK_LIBRARIES(imu_sender

@@ -35,14 +35,12 @@ SET_DIRECTORY_PROPERTIES(PROPERTIES
 ######################################################################
 # common
 
-ADD_SUBDIRECTORY (src)
 SET(CPACK_Boost_VERSION_REQUIRED 1.40)
 FIND_PACKAGE(Boost ${CPACK_Boost_VERSION_REQUIRED} COMPONENTS system regex REQUIRED)
 
-
-
 FIND_PACKAGE(Threads REQUIRED)
 
+ADD_SUBDIRECTORY (src)
 # CTest config
 # ENABLE_TESTING()
 
