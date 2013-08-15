@@ -10,9 +10,6 @@
 
 #include <iostream>
 
-#include <boost/array.hpp>
-#include <boost/asio.hpp>
-
 namespace imu_sender {
 
     class UdpSender
